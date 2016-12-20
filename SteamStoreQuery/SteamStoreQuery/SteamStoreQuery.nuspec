@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<package >
+	<metadata>
+		<id>SteamStoreQuery</id>
+		<version>1.0.0</version>
+		<authors>swiftyspiffy (cole)</authors>
+		<owners>swiftyspiffy (cole)</owners>
+		<projectUrl>https://github.com/swiftyspiffy/SteamStoreQuery</projectUrl>
+		<title>SteamStoreQuery - C# Steam store querying library.</title>
+		<description>This library allows you to search the steam store and returns a list of objects containing the listing name, price (USD), store link, image link, and app id.</description>
+		<summary>This library allows you to search the steam store and returns a list of objects containing the listing name, price (USD), store link, image link, and app id.</summary>
+		<releaseNotes>Initial release.</releaseNotes>
+		<copyright>Copyright 2016</copyright>
+		<language>en-us</language>
+		<tags>c# steam store search price api name image link</tags>
+	</metadata>
+</package>
