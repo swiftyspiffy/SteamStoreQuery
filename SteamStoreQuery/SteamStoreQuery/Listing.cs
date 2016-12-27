@@ -11,7 +11,7 @@ namespace SteamStoreQuery
         public string Name { get; protected set; }
         public string StoreLink { get; protected set; }
         public string ImageLink { get; protected set; }
-        public double PriceUSD { get; protected set; }
+        public double? PriceUSD { get; protected set; }
         public int AppId { get; protected set; }
 
         public Listing(string listingData)
@@ -22,7 +22,11 @@ namespace SteamStoreQuery
             ImageLink = listingData.Split('>')[4].Replace("\"", "").Split('=')[1];
             if (ImageLink.Contains("?"))
                 ImageLink = ImageLink.Split('?')[0];
-            PriceUSD = double.Parse(listingData.Split('>')[7].Split('<')[0].Replace("$", ""));
+            string priceCandidate = listingData.Split('>')[7].Split('<')[0];
+            if (priceCandidate == null || priceCandidate.Length < 2)
+                PriceUSD = null;
+            else
+                PriceUSD = double.Parse(listingData.Split('>')[7].Split('<')[0].Replace("$", ""));
         }
     }
 }
