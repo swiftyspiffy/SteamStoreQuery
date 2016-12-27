@@ -8,10 +8,17 @@ namespace SteamStoreQuery
 {
     public class Listing
     {
+        public enum sType
+        {
+            CostsMoney,
+            FreeToPlay,
+            NotAvailable
+        }
         public string Name { get; protected set; }
         public string StoreLink { get; protected set; }
         public string ImageLink { get; protected set; }
         public double? PriceUSD { get; protected set; }
+        public sType SaleType { get; protected set; }
         public int AppId { get; protected set; }
 
         public Listing(string listingData)
@@ -24,9 +31,18 @@ namespace SteamStoreQuery
                 ImageLink = ImageLink.Split('?')[0];
             string priceCandidate = listingData.Split('>')[7].Split('<')[0];
             if (priceCandidate == null || priceCandidate.Length < 2)
+            {
                 PriceUSD = null;
-            else
+                SaleType = sType.NotAvailable;
+            } else if(priceCandidate == "Free to Play" || priceCandidate == "Free")
+            {
+                PriceUSD = null;
+                SaleType = sType.FreeToPlay;
+            } else
+            {
                 PriceUSD = double.Parse(listingData.Split('>')[7].Split('<')[0].Replace("$", ""));
+                SaleType = sType.CostsMoney;
+            }
         }
     }
 }
