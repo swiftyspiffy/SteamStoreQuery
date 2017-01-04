@@ -34,13 +34,13 @@ namespace SteamStoreQuery
             {
                 PriceUSD = null;
                 SaleType = sType.NotAvailable;
-            } else if(priceCandidate == "Free to Play" || priceCandidate == "Free")
+            } else if(priceCandidate.ToLower().Contains("free"))
             {
                 PriceUSD = null;
                 SaleType = sType.FreeToPlay;
             } else
             {
-                PriceUSD = double.Parse(listingData.Split('>')[7].Split('<')[0].Replace("$", ""));
+                PriceUSD = double.Parse(priceCandidate.Replace("$", ""));
                 SaleType = sType.CostsMoney;
             }
         }
