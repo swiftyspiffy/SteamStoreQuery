@@ -1,5 +1,6 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -40,7 +41,7 @@ namespace SteamStoreQuery
                 SaleType = sType.FreeToPlay;
             } else
             {
-                PriceUSD = double.Parse(priceCandidate.Replace("$", ""));
+                PriceUSD = double.Parse(priceCandidate.Replace("$", ""), CultureInfo.InvariantCulture);
                 SaleType = sType.CostsMoney;
             }
         }
