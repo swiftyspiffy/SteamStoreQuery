@@ -2,7 +2,7 @@
   <PropertyGroup>
     <TargetFrameworks>netstandard2.0;net452</TargetFrameworks>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Product>SteamStoreQuery - Query steam store and get listing information. [.NET Core]</Product>
+    <Product>SteamStoreQuery - Query steam store and get listing information. [.NET Core Support]</Product>
     <Authors>swiftyspiffy</Authors>
     <Company>swiftyspiffy</Company>
     <Description>SteamStoreQuery is a simple library that allows you to search the Steam store and get listings for related games, including their price (USD), name, store link, image link, and app id.</Description>
