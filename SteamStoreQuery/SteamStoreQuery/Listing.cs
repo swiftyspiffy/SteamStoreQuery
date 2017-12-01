@@ -8,7 +8,7 @@ namespace SteamStoreQuery
         public string Name { get; protected set; }
         public string StoreLink { get; protected set; }
         public string ImageLink { get; protected set; }
-        public double? Price { get; protected set; }
+        public double? PriceUSD { get; protected set; }
         public sType SaleType { get; protected set; }
         public int AppId { get; protected set; }
 
@@ -23,17 +23,17 @@ namespace SteamStoreQuery
             string priceCandidate = listingData.Split('>')[7].Split('<')[0];
             if (priceCandidate == null || priceCandidate.Length < 2)
             {
-                Price = null;
+                PriceUSD = null;
                 SaleType = sType.NotAvailable;
             }
             else if(priceCandidate.ToLower().Contains("free"))
             {
-                Price = null;
+                PriceUSD = null;
                 SaleType = sType.FreeToPlay;
             }
             else
             {
-                Price = double.Parse(priceCandidate.Replace("$", ""), CultureInfo.InvariantCulture);
+                PriceUSD = double.Parse(priceCandidate.Replace("$", ""), CultureInfo.InvariantCulture);
                 SaleType = sType.CostsMoney;
             }
         }

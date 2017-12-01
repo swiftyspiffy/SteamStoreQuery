@@ -7,10 +7,10 @@ namespace SteamStoreQuery
 {
     public static class Query
     {
-        public static List<Listing> Search(string gameName, Currency cur = Currency.us)
+        public static List<Listing> Search(string gameName)
         {
             List<Listing> results = new List<Listing>();
-            string response = new WebClient().DownloadString($"http://store.steampowered.com/search/suggest?term={gameName}&f=games&cc={cur}&lang=english&v=2286217");
+            string response = new WebClient().DownloadString($"http://store.steampowered.com/search/suggest?term={gameName}&f=games&cc=us&lang=english&v=2286217");
             if (!response.Contains("match ds_collapse_flag "))
                 return results; 
 
