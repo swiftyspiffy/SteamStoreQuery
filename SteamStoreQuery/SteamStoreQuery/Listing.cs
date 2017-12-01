@@ -1,20 +1,10 @@
-using System;
-using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using SteamStoreQuery.Enums;
 
 namespace SteamStoreQuery
 {
     public class Listing
     {
-        public enum sType
-        {
-            CostsMoney,
-            FreeToPlay,
-            NotAvailable
-        }
         public string Name { get; protected set; }
         public string StoreLink { get; protected set; }
         public string ImageLink { get; protected set; }
@@ -35,11 +25,13 @@ namespace SteamStoreQuery
             {
                 PriceUSD = null;
                 SaleType = sType.NotAvailable;
-            } else if(priceCandidate.ToLower().Contains("free"))
+            }
+            else if(priceCandidate.ToLower().Contains("free"))
             {
                 PriceUSD = null;
                 SaleType = sType.FreeToPlay;
-            } else
+            }
+            else
             {
                 PriceUSD = double.Parse(priceCandidate.Replace("$", ""), CultureInfo.InvariantCulture);
                 SaleType = sType.CostsMoney;
