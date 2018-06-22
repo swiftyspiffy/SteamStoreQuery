@@ -24,15 +24,15 @@ namespace SteamStoreQueryTest
                 {
                     switch(result.SaleType)
                     {
-                        case Listing.sType.CostsMoney:
+                        case SteamStoreQuery.Enums.sType.CostsMoney:
                             Console.WriteLine($"Name: {result.Name}\nStore Link: {result.StoreLink}\nApp Id: {result.AppId}\nImage Link: {result.ImageLink}\nPrice (USD): {result.PriceUSD}\n\n");
                             break;
 
-                        case Listing.sType.FreeToPlay:
+                        case SteamStoreQuery.Enums.sType.FreeToPlay:
                             Console.WriteLine($"Name: {result.Name}\nStore Link: {result.StoreLink}\nApp Id: {result.AppId}\nImage Link: {result.ImageLink}\nPrice (USD): Free to Play!\n\n");
                             break;
 
-                        case Listing.sType.NotAvailable:
+                        case SteamStoreQuery.Enums.sType.NotAvailable:
                             Console.WriteLine($"Name: {result.Name}\nStore Link: {result.StoreLink}\nApp Id: {result.AppId}\nImage Link: {result.ImageLink}\nPrice (USD): Not Available!\n\n");
                             break;
                     }

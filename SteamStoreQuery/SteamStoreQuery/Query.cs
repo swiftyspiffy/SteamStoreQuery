@@ -10,7 +10,8 @@ namespace SteamStoreQuery
         public static List<Listing> Search(string gameName)
         {
             List<Listing> results = new List<Listing>();
-            string response = new WebClient().DownloadString($"http://store.steampowered.com/search/suggest?term={gameName}&f=games&cc=us&lang=english&v=2286217");
+            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+            string response = new WebClient().DownloadString($"https://store.steampowered.com/search/suggest?term={gameName}&f=games&cc=us&lang=english&v=2286217");
             if (!response.Contains("match ds_collapse_flag "))
                 return results; 
 

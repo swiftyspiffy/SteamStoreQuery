@@ -5,16 +5,17 @@
     <Product>SteamStoreQuery - Query steam store and get listing information. [.NET Core Support]</Product>
     <Authors>swiftyspiffy</Authors>
     <Company>swiftyspiffy</Company>
-    <Description>SteamStoreQuery is a simple library that allows you to search the Steam store and get listings for related games, including their price (USD), name, store link, image link, and app id.</Description>
-    <Version>1.0.1</Version>
-    <AssemblyVersion>1.1.0.0</AssemblyVersion>
-    <FileVersion>1.1.0.0</FileVersion>
-    <PackageReleaseNotes>Adds Core support.</PackageReleaseNotes>
-    <Copyright></Copyright>
+    <Description>SteamStoreQuery is a simple library that allows you to search the Steam store and get listings for related games, including their price (USD), name, store link, image link, and app id. (Uses undocumented, not supported store endpoint)</Description>
+    <Version>1.0.4</Version>
+    <AssemblyVersion>1.0.4.0</AssemblyVersion>
+    <FileVersion>1.0.4.0</FileVersion>
+    <PackageReleaseNotes>Updates to use ssl/https, and now auto generates package. Other slight improvements.</PackageReleaseNotes>
+    <Copyright>swiftyspiffy 2018</Copyright>
     <PackageProjectUrl>https://github.com/swiftyspiffy/SteamStoreQuery</PackageProjectUrl>
     <RepositoryUrl>https://github.com/swiftyspiffy/SteamStoreQuery</RepositoryUrl>
     <RepositoryType>github</RepositoryType>
-    <PackageTags>steam create get view access twitch net core</PackageTags>    
+    <PackageTags>steam create get view access twitch net core</PackageTags>
+    <PackageLicenseUrl>https://github.com/swiftyspiffy/SteamStoreQuery/blob/master/LICENSE</PackageLicenseUrl>    
   </PropertyGroup>  
     <ItemGroup>
       <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
