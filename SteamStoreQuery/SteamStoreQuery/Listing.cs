@@ -15,7 +15,7 @@ namespace SteamStoreQuery
         public Listing(string listingData)
         {
             Name = listingData.Split('>')[2].Split('<')[0];
-            StoreLink = listingData.Split('=')[2].Replace("\"", "").Split('?')[0];
+            StoreLink = listingData.Split('=')[3].Replace("\"", "").Split('?')[0];
             AppId = int.Parse(listingData.Split('=')[1].Replace("\"", "").Split(' ')[0]);
             ImageLink = listingData.Split('>')[4].Replace("\"", "").Split('=')[1];
             if (ImageLink.Contains("?"))
