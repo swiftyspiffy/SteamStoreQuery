@@ -33,7 +33,7 @@ namespace SteamStoreQuery
             }
             else
             {
-                Price = priceCandidate
+                Price = priceCandidate;
                 SaleType = sType.CostsMoney;
             }
         }
