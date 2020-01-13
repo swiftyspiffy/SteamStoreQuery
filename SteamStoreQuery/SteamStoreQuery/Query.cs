@@ -7,7 +7,7 @@ namespace SteamStoreQuery
 {
     public static class Query
     {
-        public static List<Listing> Search(string gameName, string cc)
+        public static List<Listing> Search(string gameName, string cc = "us")
         {
             List<Listing> results = new List<Listing>();
             ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
