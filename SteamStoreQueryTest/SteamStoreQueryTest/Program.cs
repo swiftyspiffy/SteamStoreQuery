@@ -25,7 +25,7 @@ namespace SteamStoreQueryTest
                     switch(result.SaleType)
                     {
                         case SteamStoreQuery.Enums.sType.CostsMoney:
-                            Console.WriteLine($"Name: {result.Name}\nStore Link: {result.StoreLink}\nApp Id: {result.AppId}\nImage Link: {result.ImageLink}\nPrice (USD): {result.PriceUSD}\n\n");
+                            Console.WriteLine($"Name: {result.Name}\nStore Link: {result.StoreLink}\nApp Id: {result.AppId}\nImage Link: {result.ImageLink}\nPrice (USD): {result.Price}\n\n");
                             break;
 
                         case SteamStoreQuery.Enums.sType.FreeToPlay:
