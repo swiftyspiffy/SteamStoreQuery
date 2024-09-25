@@ -1,5 +1,6 @@
 using System;
 using System.Globalization;
+using System.Linq;
 using System.Text;
 using SteamStoreQuery.Enums;
 
@@ -33,8 +34,16 @@ namespace SteamStoreQuery
 
         private static string getStoreLink(string input)
         {
+            if (!input.Contains("data-ds-tagids=\""))
+                return "";
             var first = input.Split(new string[] { "data-ds-tagids=\"" }, StringSplitOptions.None)[1];
+
+            if (!first.Contains("\"><div class=\"match_name\""))
+                return "";
             var second = first.Split(new string[] { "\"><div class=\"match_name\"" }, StringSplitOptions.None)[0];
+
+            if (!second.Contains("href=\""))
+                return "";
             var final = second.Split(new string[] { "href=\"" }, StringSplitOptions.None)[1];
             if (final.Contains("?"))
             {
