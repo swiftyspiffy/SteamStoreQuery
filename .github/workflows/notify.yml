@@ -9,3 +9,4 @@ jobs:
     uses: swiftyspiffy/.github/.github/workflows/notify-commit.yml@main
     secrets:
       TS_AUTHKEY: ${{ secrets.TS_AUTHKEY }}
+      NTFY_SERVER_URL: ${{ secrets.NTFY_SERVER_URL }}
