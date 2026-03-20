@@ -2,7 +2,7 @@ name: Notify Commit
 
 on:
   push:
-    branches: [main]
+    branches: [master]
 
 jobs:
   notify:
