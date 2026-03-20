@@ -1,0 +1,11 @@
+name: Notify Commit
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  notify:
+    uses: swiftyspiffy/.github/.github/workflows/notify-commit.yml@main
+    secrets:
+      TS_AUTHKEY: ${{ secrets.TS_AUTHKEY }}
