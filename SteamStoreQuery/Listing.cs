@@ -1,7 +1,7 @@
 using System;
 using System.Globalization;
-using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using SteamStoreQuery.Enums;
 
 namespace SteamStoreQuery
@@ -17,22 +17,16 @@ namespace SteamStoreQuery
 
         public Listing(string listingData)
         {
-            Name = handleSpecialCharacters(listingData.Split('>')[2].Split('<')[0]);
-            StoreLink = handleSpecialCharacters(getStoreLink(listingData));
-            AppId = handleSpecialCharacters(getAppId(listingData));
-            ImageLink = handleSpecialCharacters(getImageLink(listingData));
-            var pricingData = getPricing(listingData);
+            Name = HandleSpecialCharacters(listingData.Split('>')[2].Split('<')[0]);
+            StoreLink = HandleSpecialCharacters(GetStoreLink(listingData));
+            AppId = HandleSpecialCharacters(GetAppId(listingData));
+            ImageLink = HandleSpecialCharacters(GetImageLink(listingData));
+            var pricingData = GetPricing(listingData);
             SaleType = pricingData.Item1;
             Price = pricingData.Item2;
         }
 
-        private static string getName(string input)
-        {
-            //<div class="match_name">
-            return input.Split(new string[] { "<div class=\"match_name\">" }, StringSplitOptions.None)[1].Split(new string[] { "</div>" }, StringSplitOptions.None)[0];
-        }
-
-        private static string getStoreLink(string input)
+        private static string GetStoreLink(string input)
         {
             if (!input.Contains("data-ds-tagids=\""))
                 return "";
@@ -49,7 +43,7 @@ namespace SteamStoreQuery
             {
                 final = final.Split('?')[0];
             }
-            if(final.EndsWith("/"))
+            if (final.EndsWith("/"))
             {
                 final = final.TrimEnd('/');
             }
@@ -57,12 +51,12 @@ namespace SteamStoreQuery
             return final;
         }
 
-        private static string getAppId(string input)
+        private static string GetAppId(string input)
         {
             return input.Split('=')[1].Replace("\"", "").Split(' ')[0];
         }
 
-        private static string getImageLink(string input)
+        private static string GetImageLink(string input)
         {
             var imageLink = input.Split('>')[4].Replace("\"", "").Split('=')[1];
             if (imageLink.Contains("?"))
@@ -70,7 +64,7 @@ namespace SteamStoreQuery
             return imageLink;
         }
 
-        private static Tuple<sType, double?> getPricing(string input)
+        private static Tuple<sType, double?> GetPricing(string input)
         {
             string priceCandidate = input.Split('>')[7].Split('<')[0];
             double? price = null;
@@ -87,13 +81,14 @@ namespace SteamStoreQuery
             }
             else
             {
-                price = double.Parse(priceCandidate.Replace("$", ""), CultureInfo.InvariantCulture);
+                var numericString = Regex.Replace(priceCandidate, @"[^\d.]", "");
+                price = double.Parse(numericString, CultureInfo.InvariantCulture);
                 saleType = sType.CostsMoney;
             }
             return new Tuple<sType, double?>(saleType, price);
         }
 
-        private static string handleSpecialCharacters(string input)
+        private static string HandleSpecialCharacters(string input)
         {
             var bytes = Encoding.Default.GetBytes(input);
             return Encoding.UTF8.GetString(bytes);

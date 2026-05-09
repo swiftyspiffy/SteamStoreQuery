@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="SteamStoreQuery.Example/SteamStoreQuery.Example.csproj" />
+  <Project Path="SteamStoreQuery.Tests/SteamStoreQuery.Tests.csproj" />
+  <Project Path="SteamStoreQuery/SteamStoreQuery.csproj" />
+</Solution>
